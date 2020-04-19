@@ -9,6 +9,7 @@ using Xamarin.Forms.Platform.Android;
 using MapView = Naxam.Controls.Forms.MapView;
 using View = Android.Views.View;
 using NxLatLng = Naxam.Mapbox.LatLng;
+using AndroidX.Fragment.App;
 
 namespace Naxam.Controls.Mapbox.Platform.Droid
 {
@@ -42,7 +43,7 @@ namespace Naxam.Controls.Mapbox.Platform.Droid
 
             if (Control == null)
             {
-                var activity = (AppCompatActivity) Context;
+                var activity = (AndroidX.Fragment.App.FragmentActivity) Context;
                 var view = new Android.Widget.FrameLayout(activity)
                 {
                     Id = GenerateViewId()
@@ -71,7 +72,7 @@ namespace Naxam.Controls.Mapbox.Platform.Droid
             {
                 if (fragment.StateSaved)
                 {
-                    var activity = (AppCompatActivity) Context;
+                    var activity = (AndroidX.Fragment.App.FragmentActivity) Context;
                     var fm = activity.SupportFragmentManager;
 
                     fm.BeginTransaction()

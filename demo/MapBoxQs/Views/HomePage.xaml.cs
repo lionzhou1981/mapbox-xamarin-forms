@@ -57,7 +57,7 @@ namespace MapBoxQs.Views
                     page = new StylesDefaultPage();
                     break;
                 case "Symbol layer icons":
-                    page = new StylesSymbolLayerIconsPage();
+                    page = new PluginSymbolListener();
                     break;
                 case "Symbol layer icon size change":
                     page = new StylesSymbolLayerIconSizeChangePage();

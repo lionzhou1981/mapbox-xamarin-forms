@@ -18,8 +18,8 @@ namespace MapBoxQs.Services
     {
         HttpClient client;
         static string BaseURL = "https://api.mapbox.com/";
-        public static string AccessToken = "pk.eyJ1IjoiaGVtYW1hcHMiLCJhIjoiY2p3NXRwdzFyMGQ3YzRhbHd2YXhrNndrOCJ9.4hUaK_smFoaHNeU1xbGCQQ";
-        public static string Username = "tuyenv";
+        public static string AccessToken = "pk.eyJ1IjoiZGlnaXRhcHBzIiwiYSI6ImNrOTVlNWxmNDA0ZzkzZW1wYTdiMW1td2UifQ.8hRnfZcjwRWgAUachVEhCQ";
+        public static string Username = "digitapps";
         public MapBoxService()
         {
             client = new HttpClient()

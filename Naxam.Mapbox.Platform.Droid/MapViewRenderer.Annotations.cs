@@ -85,18 +85,23 @@ namespace Naxam.Controls.Mapbox.Platform.Droid
                     case SymbolAnnotation symbolAnnotation:
                         {
                             if (symbolManager == null) continue;
-                            Object symbol = null;
                             try
                             {
-                                symbol = new Object(
-                                    symbolAnnotation.NativeHandle,
-                                    Android.Runtime.JniHandleOwnership.DoNotTransfer
-                                    );
-                                symbolManager.Delete(symbol);
+
+                                for (int j = 0; j < symbolManager.Annotations.Size(); j++)
+                                {
+                                    var symbol = Android.Runtime.Extensions.JavaCast<Symbol>(symbolManager.Annotations.ValueAt(j));
+
+                                    if (symbol.Id.ToString() == symbolAnnotation.Id)
+                                    {
+                                        symbolManager.Delete(symbol);
+                                    }
+                                    symbol?.Dispose();
+                                }
+                                //symbolManager.Delete(symbolManager.Annotations.Get(int.Parse(symbolAnnotation.Id)));
                             }
                             finally
                             {
-                                symbol?.Dispose();
                             }
                         }
                         break;
@@ -171,7 +176,8 @@ namespace Naxam.Controls.Mapbox.Platform.Droid
     {
         public void UpdateAnnotation(NxAnnotation annotation)
         {
-            switch (annotation) {
+            switch (annotation)
+            {
                 case SymbolAnnotation symbolAnnotation:
                     if (symbolManager == null) return;
 

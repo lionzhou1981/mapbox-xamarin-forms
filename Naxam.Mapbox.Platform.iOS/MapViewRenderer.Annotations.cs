@@ -49,6 +49,7 @@ namespace Naxam.Controls.Mapbox.Platform.iOS
                 {
                     continue;
                 }
+
                 annots.Add(shape);
             }
             map.AddAnnotations(annots.ToArray());
@@ -97,6 +98,14 @@ namespace Naxam.Controls.Mapbox.Platform.iOS
                 point.Coordinates = annotation.Coordinate.ToLatLng();
                 Element.DragFinishedCommand?.Execute(point);
             };
+
+
+            view.AddGestureRecognizer(new UITapGestureRecognizer(tap =>
+            {
+                Element.DidTapOnMarkerCommand?.Execute(fannotation.Id);
+            }));
+
+            //mapView.SelectAnnotation(annotation, true, null);
 
             return view;
         }
